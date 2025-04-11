@@ -9,7 +9,6 @@ class Departamento{
         $this->supdeptid = $supdeptid;
     }
 
-
 }
 
 ?>

@@ -19,29 +19,59 @@ $contrasena = "2024*madock*";
 $conn = $bd->conectar($usuario, $contrasena);
 
 if ($conn) {
-    //echo "✅ Conexión exitosa a la base de datos.<br>";
-
     // Definir la consulta SQL
     $sql = "SELECT DEPTID AS 'SUB_AREA', DEPTNAME AS 'NOMBRE', (SELECT DEPTNAME FROM DEPARTMENTS AS d2 WHERE d2.DEPTID = d1.SUPDEPTID) AS 'AREA'
-            FROM DEPARTMENTS AS d1"; // Asegúrate de que 'DEPARTMENTS' sea la tabla correcta
+            FROM DEPARTMENTS AS d1"; 
 
     // Llamar a la función listar para ejecutar la consulta
     $resultados = $bd->listar($conn, $sql);
 
-    // Verificar si los resultados están vacíos
+    //Impresion de datos
     if (!empty($resultados)) {
-        echo "Resultados encontrados:<br>";
+        //para estética 💅
+        echo "
+        <style>
+            table {
+                border-collapse: collapse;
+                width: 100%;
+                margin-top: 10px;
+                font-family: Arial, sans-serif;
+            }
+            th, td {
+                border: 1px solid #999;
+                padding: 8px;
+                text-align: left;
+            }
+            th {
+                background-color:rgb(182, 134, 168);
+                color: white;
+            }
+            tr:nth-child(even) {
+                background-color: #f9f9f9;
+            }
+        </style>";
 
-        // Depuración: Imprimir todo el array de resultados para ver cómo están estructurados
-        echo "<pre>";
-        print_r($resultados);  // Esto te mostrará todas las columnas y sus valores
-        echo "</pre>";
+        //imprimiendo tabla
+        echo "<div style='text-align: center;'>
+                <h3 style='margin-bottom: 30px;'>Resultados encontrados:</h3>
+              </div>";
 
-        // Mostrar los resultados de manera correcta
+        echo "<table border='1' cellpadding='5' cellspacing='0'>";
+        echo "<tr>
+                <th>SUB_AREA</th>
+                <th>NOMBRE</th>
+                <th>AREA</th>
+            </tr>";
+
         foreach ($resultados as $fila) {
-            // Aquí debes acceder a las columnas por su nombre real. Por ejemplo, si la columna es 'department_id', usa eso:
-            echo "ID: " . $fila['department_id'] . " - Nombre: " . $fila['department_name'] . "<br>";
+            echo "<tr>";
+            echo "<td>" . $fila['SUB_AREA'] . "</td>";
+            echo "<td>" . $fila['NOMBRE'] . "</td>";
+            echo "<td>" . $fila['AREA'] . "</td>";
+            echo "</tr>";
         }
+
+        echo "</table>";
     } else {
         echo "No se encontraron resultados.";
     }

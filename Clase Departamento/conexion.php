@@ -23,6 +23,7 @@ class BaseDeDatos{
         }
     } */
     
+    //funcion encargada de conectar a la base de dastos
     public function conectar($Login, $contrasena) {
 		$connectionInfo = array(
 			"Database" => "zktimedb", 
@@ -41,6 +42,7 @@ class BaseDeDatos{
 		return $conn; // Devolver la conexión en caso de éxito
 	}
 
+    //funcion encargada de mostrar lo que le mando como matriz, osea la matriz
     public function listar($conn, $sql){
         // Ejecutar la consulta
         $query = sqlsrv_query($conn, $sql);
