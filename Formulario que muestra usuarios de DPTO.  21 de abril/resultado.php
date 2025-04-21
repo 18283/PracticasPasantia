@@ -59,7 +59,7 @@ echo "<div style='text-align: center;'><h3>Resultados encontrados:</h3></div>";
 // Encabezados de la tabla
 echo "<table>";
 echo "<tr>
-        <th>ID Usuario</th>
+        <th>CI Usuario</th>
         <th>Nombre</th>
       </tr>";
 
@@ -68,7 +68,7 @@ $hayResultados = false;
 while ($row = sqlsrv_fetch_array($stmt, SQLSRV_FETCH_ASSOC)) {
     $hayResultados = true;
     echo "<tr>";
-    echo "<td>" . $row['USERID'] . "</td>";
+    echo "<td>" . $row['BADGENUMBER'] . "</td>";
     echo "<td>" . $row['NAME'] . "</td>";
     echo "</tr>";
 }

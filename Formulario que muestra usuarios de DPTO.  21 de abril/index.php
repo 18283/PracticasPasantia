@@ -35,8 +35,9 @@ echo '<!DOCTYPE html>
 
 // Agregar cada DEPTID como opción en el select
 while ($row = sqlsrv_fetch_array($stmt, SQLSRV_FETCH_ASSOC)) {
-    $deptID = $row['DEPTID'];
-    echo "<option value=\"$deptID\">$deptID</option>";
+    $id = $row['DEPTID'];
+    $nombre = $row['DEPTNAME'];
+    echo "<option value='$id'>$id - $nombre</option>";
 }
 
 echo '      </select><br><br>
