@@ -69,7 +69,7 @@ echo "<tr>
         <th>Nombre</th>
         <th>Marcador</th>
         <th>Fecha</th>
-        <th>Tipo</th>
+        <th>Entrada/ Salida</th>
       </tr>";
 
 // Mostrar resultados
