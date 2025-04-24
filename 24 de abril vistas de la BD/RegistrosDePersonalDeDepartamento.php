@@ -35,7 +35,7 @@ echo "
 <style>
     table {
         border-collapse: collapse;
-        width: 90%;
+        width: 40%;
         margin: 20px auto;
         font-family: Arial, sans-serif;
     }

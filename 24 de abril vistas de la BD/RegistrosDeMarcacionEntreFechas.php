@@ -47,7 +47,7 @@ echo "
 <style>
     table {
         border-collapse: collapse;
-        width: 90%;
+        width: 60%;
         margin: 20px auto;
         font-family: Arial, sans-serif;
     }
@@ -57,7 +57,7 @@ echo "
         text-align: center;
     }
     th {
-        background-color:rgb(182, 134, 168);
+        background-color:#cb8db5;
         color: white;
     }
     tr:nth-child(even) {
@@ -67,6 +67,21 @@ echo "
 
 // Título
 echo "<div style='text-align: center;'><h3>Resultados encontrados:</h3></div>";
+
+// Cuadritos indicando para que sirve cada color (Entrada/Salida)
+echo "
+<div style='width: 60%; margin: 0 auto; text-align: right; font-family: Arial, sans-serif; margin-bottom: 10px;'>
+    <div style='display: inline-block; margin-left: 10px;'>
+        <span style='display: inline-block; width: 20px; height: 20px; background-color: #fdfefe; border: 1px solid #999; vertical-align: middle;'></span>
+        <span style='margin-left: 5px;'>Entrada</span>
+    </div>
+    <div style='display: inline-block; margin-left: 20px;'>
+        <span style='display: inline-block; width: 20px; height: 20px; background-color: #eee2ea; border: 1px solid #999; vertical-align: middle;'></span>
+        <span style='margin-left: 5px;'>Salida</span>
+    </div>
+</div>
+";
+
 
 // Encabezados de la tabla
 echo "<table>";
@@ -82,12 +97,17 @@ echo "<tr>
 $hayResultados = false;
 while ($row = sqlsrv_fetch_array($stmt, SQLSRV_FETCH_ASSOC)) {
     $hayResultados = true;
-    echo "<tr>";
+
+    // Determinar color de fondo según Entrada o Salida
+    $checkType = $row['CHECKTYPE'];
+    $backgroundColor = ($checkType === 'Entrada') ? '#fdfefe' : '#eee2ea'; //blanco o rasado claro
+
+    echo "<tr style='background-color: $backgroundColor;'>";
     echo "<td>" . $row['BADGENUMBER'] . "</td>";
     echo "<td>" . $row['NAME'] . "</td>";
     echo "<td>" . $row['MachineAlias'] . "</td>";
     echo "<td>" . $row['CHECKTIME']->format('Y-m-d H:i:s') . "</td>";
-    echo "<td>" . $row['CHECKTYPE'] . "</td>";
+    echo "<td>" . $checkType . "</td>";
     echo "</tr>";
 }
 echo "</table>";
