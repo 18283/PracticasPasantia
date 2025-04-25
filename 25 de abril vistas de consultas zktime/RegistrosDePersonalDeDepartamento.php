@@ -35,21 +35,50 @@ echo "
 <style>
     table {
         border-collapse: collapse;
-        width: 40%;
-        margin: 20px auto;
+        width: 100%;
         font-family: Arial, sans-serif;
     }
     th, td {
         border: 1px solid #999;
-        padding: 8px;
+        padding: 12px;
         text-align: center;
     }
     th {
-        background-color:rgb(182, 134, 168);
+        background-color:#cb8db5;
         color: white;
     }
     tr:nth-child(even) {
         background-color: #f9f9f9;
+    }
+
+    /* Estilo para el contenedor de la tabla con scroll */
+    .tabla-contenedor {
+        width: 60%; 
+        margin: 0 auto 30px auto; 
+        max-height: 700px; /*LARGO DE LA TABLA*/
+        overflow-y: auto; 
+        border: 1px solid #999;   
+        border-radius: 6px; 
+        box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        background-color: white;
+    }
+
+    /* Fijar encabezado de la tabla */
+    th {
+        position: sticky;
+        top: -1;
+        background-color:#cb8db5;
+        color: white;
+        z-index: 10;
+    }
+
+    tr:nth-child(even) {
+        background-color: #f9f9f9;
+    }
+
+    /* Quitar espacio entre la tabla y el encabezado */
+    .tabla-contenedor table {
+        margin-top: 0;
     }
 </style>";
 
@@ -57,12 +86,16 @@ echo "
 echo "<div style='text-align: center;'><h3>Resultados encontrados:</h3></div>";
 
 // Encabezados de la tabla
+echo "<div class='tabla-contenedor'>";
 echo "<table>";
-echo "<tr>
-        <th>CI Usuario</th>
-        <th>Nombre</th>
-        <th>Ver Marcaciones</th>
-      </tr>";
+echo "<thead>
+        <tr>
+            <th>CI Usuario</th>
+            <th>Nombre</th>
+            <th>Ver Marcaciones</th>
+        </tr>
+      </thead>";
+echo "<tbody>";
 
 // Mostrar resultados
 $hayResultados = false;
@@ -79,14 +112,16 @@ while ($row = sqlsrv_fetch_array($stmt, SQLSRV_FETCH_ASSOC)) {
       </td>";
     echo "</tr>";
 }
+echo "</tbody>";
 echo "</table>";
+echo "</div>"; // fin del contenedor con scroll
 
 if (!$hayResultados) {
     echo "<p style='text-align: center;'>No se encontraron resultados.</p>";
 }
 
-// Botón para volver
-echo "<div style='text-align: center; margin-top: 20px;' >
+// Botón para volver (fuera de la tabla)
+echo "<div style='text-align: center; margin-top: 20px;'>
         <form action='formulario.html' method='get'>
             <input type='submit' value='Volver al formulario'>
         </form>
