@@ -88,7 +88,7 @@ echo "
 
 
 // Encabezados de la tabla
-echo "<div style='width: 90%; margin: 0 auto 30px auto; max-height: 600px; overflow-y: auto; border: 1px solid #999; border-radius: 6px; box-shadow: 0 2px 5px rgba(0,0,0,0.1);'>";
+echo "<div style='width: 60%; margin: 0 auto 30px auto; max-height: 600px; overflow-y: auto; border: 1px solid #999; border-radius: 6px; box-shadow: 0 2px 5px rgba(0,0,0,0.1);'>";
 
 // Tabla con encabezado fijo
 echo "<table>";
