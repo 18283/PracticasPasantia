@@ -1,0 +1,9 @@
+{
+    "menu": {
+        "Inicio": "../VISTAS/mostrar.php",
+        "Usuarios": "../VISTAS/usuarios.php",
+        "Contacto": "../VISTAS/contacto.php",
+        "Cerrar sesion": "../index.html"
+    },
+    "fondo": "#d1c4e9"
+}
