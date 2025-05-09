@@ -5,6 +5,7 @@ class BarraNavegacion
     private $archivo;
     private $fondo;
     private $altura;
+    private $ancho;
 
     public function __construct($elem = [])
     {
@@ -19,10 +20,12 @@ class BarraNavegacion
                 $this->elementos = $data['menu'];
                 $this->fondo = $data['fondo'];
                 $this->altura = $data['altura'] ?? '50px'; // altura por defecto
+                $this->ancho = $data['ancho'] ?? '100%'; // ancho por defecto
             } else {
                 $this->elementos = $elem;
                 $this->fondo = '#d1c4e9';
                 $this->altura = '50px';
+                $this->ancho = '100%';
                 $this->guardarEnArchivo();
             }
         } else {
@@ -35,7 +38,7 @@ class BarraNavegacion
 
     public function render()
     {
-        echo '<nav style="background-color:' . htmlspecialchars($this->fondo) . '; height:' . htmlspecialchars($this->altura) . '; padding:12px;">';
+        echo '<nav style="background-color:' . htmlspecialchars($this->fondo) . '; height:' . htmlspecialchars($this->altura) . '; width:' . htmlspecialchars($this->ancho) . '; padding:12px;">';
         echo '<ul style="list-style:none; display:flex; margin:0; padding:0;">';
         foreach ($this->elementos as $texto => $url) {
             echo '<li style="margin-right:20px;"><a href="' . htmlspecialchars($url) . '" style="text-decoration:none; color:#007bff;">' . htmlspecialchars($texto) . '</a></li>';
@@ -58,7 +61,8 @@ class BarraNavegacion
         $data = [
             'menu' => $this->elementos,
             'fondo' => $this->fondo,
-            'altura' => $this->altura
+            'altura' => $this->altura,
+            'ancho' => $this->ancho
         ];
 
         $resultado = file_put_contents($this->archivo, json_encode($data, JSON_PRETTY_PRINT));
@@ -101,6 +105,15 @@ class BarraNavegacion
     }
 
     //cambiar ancho
+    public function cambiarAncho($nuevoAncho) {
+        if (preg_match('/^\d+(px|em|%)$/', $nuevoAncho)) {
+            $this->ancho = $nuevoAncho;
+            $this->guardarEnArchivo();
+        } else {
+            echo "<p style='color:red;'>Ancho inválido. Usa valores como 100%, 800px, 60em...</p>";
+        }
+    }
+
     //cambiar tamaño de etra
     //cambiar tipo de letra
     //cambiar color de letra

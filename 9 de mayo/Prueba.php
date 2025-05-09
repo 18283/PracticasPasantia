@@ -20,6 +20,12 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST["cambiar_altura"])) {
     $barra->cambiarAltura($nuevaAltura);
 }
 
+// Procesar ancho
+if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST["cambiar_ancho"])) {
+    $nuevoAncho = $_POST["ancho"] ?? '100%';
+    $barra->cambiarAncho($nuevoAncho);
+}
+
 // Procesar inserción
 if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST["crear"])) {
     $textos = $_POST["texto"];
@@ -102,4 +108,11 @@ echo '</pre>';
     <h3>Cambiar altura de la barra</h3>
     <input type="text" name="altura" placeholder="Ej: 60px o 4em">
     <input type="submit" name="cambiar_altura" value="Cambiar altura">
+</form>
+
+<!-- Formulario para cambiar el ancho -->
+<form method="post">
+    <h3>Cambiar ancho de la barra</h3>
+    <input type="text" name="ancho" placeholder="Ej: 100%, 800px, 60em">
+    <input type="submit" name="cambiar_ancho" value="Cambiar ancho">
 </form>

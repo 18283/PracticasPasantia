@@ -6,5 +6,6 @@
         "Cerrar sesion": "../index.html"
     },
     "fondo": "#d1c4e9",
-    "altura": "50px"
+    "altura": "50px",
+    "ancho": "100%"
 }
