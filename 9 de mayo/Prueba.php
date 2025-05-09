@@ -1,12 +1,9 @@
-<!--Crear la instancia de la clase.
-
-Procesar formularios.
-
-Renderizar la barra.
-
-Mostrar formularios.-->
-
 <?php
+// Crear la instancia de la clase.
+// Procesar formularios.
+// Renderizar la barra.
+// Mostrar formularios.
+
 require_once 'BarraNavegacion.php';
 
 $barra = new BarraNavegacion();
@@ -15,6 +12,12 @@ $barra = new BarraNavegacion();
 if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST["cambiar_color"])) {
     $nuevoColor = $_POST["color_fondo"] ?? '#d1c4e9';
     $barra->cambiarFondo($nuevoColor);
+}
+
+//Procesar altura
+if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST["cambiar_altura"])) {
+    $nuevaAltura = $_POST["altura"] ?? '50px';
+    $barra->cambiarAltura($nuevaAltura);
 }
 
 // Procesar inserción
@@ -33,14 +36,15 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST["crear"])) {
     }
 
     $barra->insertar($nuevosElementos);
-} else {
-    $barra->render();
 }
 
 if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST["eliminar"])) {
     $textoEliminar = $_POST["eliminar_texto"] ?? '';
     $barra->eliminarElemento($textoEliminar);
 }
+
+// Renderizar la barra SIEMPRE después de procesar cualquier acción
+$barra->render();
 ?>
 
 <!-- Formulario para ingresar nuevos elementos -->
@@ -58,37 +62,44 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST["eliminar"])) {
 </form>
 
 <script>
-function agregarElemento() {
-    const contenedor = document.getElementById("contenedor-elementos");
-    const nuevo = document.createElement("div");
-    nuevo.innerHTML = 'Texto: <input type="text" name="texto[]" required> URL: <input type="text" name="url[]" required>';
-    contenedor.appendChild(nuevo);
-}
+    function agregarElemento() {
+        const contenedor = document.getElementById("contenedor-elementos");
+        const nuevo = document.createElement("div");
+        nuevo.innerHTML = 'Texto: <input type="text" name="texto[]" required> URL: <input type="text" name="url[]" required>';
+        contenedor.appendChild(nuevo);
+    }
 </script>
 
 <?php
-    echo '<pre>';
-    print_r($barra->devolverMenu());
-    echo '</pre>';
+echo '<pre>';
+print_r($barra->devolverMenu());
+echo '</pre>';
 
-    
+
 
 ?>
 
-// Formulario para eliminar un elemento 
-    <form method="post">
-        <h3>Eliminar un elemento de la barra</h3>
-        <select name="eliminar_texto">
-            <?php foreach ($barra->devolverMenu() as $texto => $url): ?>
-                <option value="<?= htmlspecialchars($texto) ?>"><?= htmlspecialchars($texto) ?></option>
-            <?php endforeach; ?>
-        </select>
-        <input type="submit" name="eliminar" value="Eliminar">
-    </form>
+// Formulario para eliminar un elemento
+<form method="post">
+    <h3>Eliminar un elemento de la barra</h3>
+    <select name="eliminar_texto">
+        <?php foreach ($barra->devolverMenu() as $texto => $url): ?>
+            <option value="<?= htmlspecialchars($texto) ?>"><?= htmlspecialchars($texto) ?></option>
+        <?php endforeach; ?>
+    </select>
+    <input type="submit" name="eliminar" value="Eliminar">
+</form>
 
-    <!-- Formulario para cambiar el color de fondo -->
+<!-- Formulario para cambiar el color de fondo -->
 <form method="post">
     <h3>Cambiar color de fondo de la barra</h3>
     <input type="color" name="color_fondo" value="#d1c4e9">
     <input type="submit" name="cambiar_color" value="Cambiar fondo">
+</form>
+
+<!--formulario HTML para cambiar la altura:-->
+<form method="post">
+    <h3>Cambiar altura de la barra</h3>
+    <input type="text" name="altura" placeholder="Ej: 60px o 4em">
+    <input type="submit" name="cambiar_altura" value="Cambiar altura">
 </form>
