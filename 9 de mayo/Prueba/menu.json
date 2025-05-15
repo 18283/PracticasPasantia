@@ -1,0 +1,11 @@
+{
+    "menu": {
+        "Inicio": "..\/VISTAS\/mostrar.php",
+        "Usuarios": "..\/VISTAS\/usuarios.php",
+        "Cerrar sesion": "..\/index.html",
+        "uno": "..\/VISTAS\/usuarios.php"
+    },
+    "fondo": "#cac591",
+    "altura": "30px",
+    "ancho": "100%"
+}
