@@ -1,0 +1,143 @@
+body {
+    background-color: #000;
+    /* Fondo negro */
+    color: #fff;
+    /* Texto blanco */
+    margin: 0;
+}
+
+/* Tabla de usuarios */
+table {
+    background-color: #000;
+    /* Fondo negro */
+    border: 1px solid #b19146;
+    /* Bordes amarillos */
+}
+
+th {
+    background-color: #b19146;
+    /* Encabezado amarillo */
+    color: #000;
+    /* Texto negro */
+    font-weight: bold;
+}
+
+td {
+    color: #ff0000;
+    /* Texto blanco */
+}
+
+tr:hover {
+    background-color: rgba(255, 193, 7, 0.2);
+    /* Amarillo translúcido al pasar el mouse */
+}
+
+/* Botones */
+.btn-editar {
+    background-color: #b19146;
+    /* Fondo amarillo */
+    color: #000;
+    /* Texto negro */
+    font-weight: bold;
+    border: none;
+}
+
+.btn-editar:hover {
+    background-color: #fff;
+    /* Fondo blanco */
+    color: #000;
+    /* Texto negro */
+    border: 1px solid #b19146;
+}
+
+.btn-borrar {
+    background-color: #000;
+    /* Fondo negro */
+    color: #b19146;
+    /* Texto amarillo */
+    border: 1px solid #b19146;
+}
+
+.btn-borrar:hover {
+    background-color: #b19146;
+    /* Fondo amarillo */
+    color: #000;
+    /* Texto negro */
+}
+
+/* Paginación */
+/* Estilo para la paginación */
+.pagination .page-link {
+    color: #b19146;
+    /* Amarillo */
+    background-color: #000;
+    /* Negro */
+    border: 1px solid #b19146;
+    /* Borde amarillo */
+    margin: 0 2px;
+}
+
+.pagination .page-item.active .page-link {
+    background-color: #b19146;
+    /* Amarillo */
+    color: #000;
+    /* Negro */
+    font-weight: bold;
+}
+
+.pagination .page-link:hover {
+    background-color: #b19146;
+    /* Hover amarillo */
+    color: #000;
+}
+
+/* Estilo para los botones Anterior y Siguiente */
+.pagination .page-item:first-child .page-link,
+.pagination .page-item:last-child .page-link {
+    font-weight: bold;
+    background-color: #000;
+    color: #b19146;
+}
+
+.pagination .page-item:first-child .page-link:hover,
+.pagination .page-item:last-child .page-link:hover {
+    background-color: #b19146;
+    color: #000;
+}
+
+/* Puntos suspensivos */
+.pagination .disabled .page-link {
+    background-color: transparent;
+    color: #b19146;
+    font-weight: bold;
+    border: none;
+}
+
+/* Formulario para registros por página */
+.form-select {
+    background-color: #000;
+    /* Fondo negro */
+    color: #b19146;
+    /* Texto amarillo */
+    border: 1px solid #b19146;
+}
+
+.form-select:focus {
+    border-color: #b19146;
+    box-shadow: none;
+}
+
+.btn-actualizar {
+    background-color: #b19146;
+    /* Amarillo */
+    color: #000;
+    /* Texto negro */
+    font-weight: bold;
+    border: none;
+}
+
+.btn-actualizar:hover {
+    background-color: #fff;
+    color: #000;
+    border: 1px solid #b19146;
+}

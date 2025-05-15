@@ -1,0 +1,570 @@
+*{
+  box-sizing: border-box;
+}
+body
+{
+
+  background-image: url(FONDO1.jfif);
+ background-size: cover;
+  background-attachment: fixed;
+  width: 100%;
+  height: 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+
+
+}
+
+.fondol {
+
+background-image: url(ax.png);
+ background-size: cover;
+  background-attachment: fixed;
+  width: 100%;
+  height: 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+
+}
+.contenedor{
+	width: 1000px;
+	background-color: #313131;
+	margin: auto;
+
+}
+.contenedor2{
+width: 100%;
+	max-width: 960px;
+	height:1200px ;
+	background-color: #ecf0f1;
+	margin: auto ;
+
+  background-image: url(fondo2.jfif);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-attachment: fixed;
+  box-sizing: border-box;
+
+
+
+}
+header{
+
+	width: 100%;
+	max-width: 960px;
+	height: 100px;
+	background-color: white;
+	margin: auto ;
+	border-top:  5px solid;
+	border-color: #40CFFF;
+}
+header p {
+	color: black;
+	font-weight: normal;
+	margin: 0px;
+	position: relative;
+	bottom: 20px;
+	margin-left:  20px;
+}
+ .titulo{
+	margin-top: 10px;
+	margin-bottom: 15px;
+	margin-left:  20px;
+	color: black;
+	
+	
+	font-weight: normal;
+}
+
+.centrado{
+	display: inline-block;
+}
+.cepe{
+
+	font-size: 40px;
+}
+  nav a{
+
+  color: black;
+  font-weight: bold;
+  text-decoration: none;
+  padding: 35px 14.7px 40px 15px;
+  position: relative;
+  left: 200px; 
+  top: -50px;
+
+ text-transform: uppercase;
+
+}
+
+nav a:hover{
+  background-color: #40CFFF;
+  color: white;
+}
+.linea{ 
+	border: 2px solid;
+	border-color:#40CFFF; 
+	width: 920px;
+	position: relative;
+	bottom: 19px;
+
+}
+
+.parra{
+    
+	
+	text-align: center;
+   margin: 20px 130px 20px 130px;
+	font-size: 22px;
+	font-family: ARIAL;
+	color: white;
+	height: 136px;
+	padding-top: 35px;
+}
+
+
+
+.mySlides {display: none}
+
+
+img {vertical-align: middle;}
+
+/* Slideshow container */
+.slideshow-container {
+  max-width: 920px;
+  max-height: 350px;
+  position: relative;
+  margin: auto;
+}
+
+/* Next & previous buttons */
+.prev  {
+  cursor: pointer;
+  position: absolute;
+  top: 45%;
+  left:   10px;
+   width: 50px;
+  height: 50px;
+padding: 10px;
+  
+
+  color: #186a91;
+  font-weight: bold;
+
+  font-size: 30px;
+  transition: 0.6s ease;
+
+  border-radius: 50%;
+  background-color: black;
+ 
+
+   border: 2px solid;
+  border-color: #0c1be7;
+}
+
+/* Position the "next button" to the right */
+.imagem{
+  position: relative;
+  top: 5px;
+
+
+}
+.imagem2{
+  position: relative;
+  top: -5px;
+
+
+}
+.next  {
+  cursor: pointer;
+  position: absolute;
+  top: 45%;
+  width: 50px;
+  height: 50px;
+ padding: 0px 0px 0px 0px;
+  text-align: center;
+  left: 860px;
+  /*margin: 0px 10px 0px 10px;*/
+
+  color: #186a91;
+  font-weight: bold;
+
+  font-size: 20px;
+  transition: 0.6s ease;
+
+  border-radius: 50%;
+  background-color: black;
+ 
+
+   border: 2px solid;
+  border-color: #0c1be7;
+}
+
+.activo{
+  background-color: #40CFFF;
+}
+
+.dot {
+  cursor: pointer;
+  height: 15px;
+  width: 15px;
+  margin: 0 2px;
+  position: relative;
+  top: 40px;
+
+  background-color: #40CFFF;
+  border-radius: 50%;
+  display: inline-block;
+  transition: background-color 0.6s ease;
+}
+
+.active, .dot:hover {
+  background-color: white;
+  border: 3px solid;
+  border-color: #40CFFF;
+ 
+
+}
+
+
+
+/* Fading animation */
+.fade {
+  -webkit-animation-name: fade;
+  -webkit-animation-duration: 1.5s;
+  animation-name: fade;
+  animation-duration: 1.5s;
+}
+
+@-webkit-keyframes fade {
+  from {opacity: .4} 
+  to {opacity: 1}
+}
+
+@keyframes fade {
+  from {opacity: .4} 
+  to {opacity: 1}
+}
+
+.contem{
+  
+  width: 960px
+}
+h3{
+  font-size: 22px;
+  font-weight: normal;
+  color: white;
+  font-family: ARIAL;
+}
+
+.iman{
+  margin-left: 10px;
+}
+.izquierda{
+  
+  width: 300px;
+  display: inline-block;
+  height: 430px;
+  position: relative;
+  top: 51px;
+  margin-left: 20px;
+}
+
+.enlace{
+  color: #4ee911;
+ float: right;
+ text-decoration: none;
+}
+
+.content{
+  
+  color: white;
+  width: 240px;
+  font-family: ARIAL;
+   font-size: 13px;
+}
+ .medio{
+
+ display: inline-block;
+  height: 430px;
+  width: 300px;
+  position: relative;
+  left: 10px;
+ 
+
+ }
+.derecha{
+ 
+  width: 300px;
+  height: 430px;
+  display: inline-block;
+  position: relative;
+  top: 10px;
+  left: 10px;
+  
+ }
+.imagen3{
+     position: relative;
+ top: -3px;
+}
+   .texto {
+  color: white;
+  position: relative;
+  top: -25px;
+  display: inline-table;
+  padding: 0px 0px 0px 20px;
+  
+  width: 200px;
+   font-family: ARIAL;
+   font-size: 13px;
+ }
+
+ .imagen{
+   position: relative;
+ top: -5px;
+ }
+ .texto2{
+   color: white;
+  position: relative;
+  top: -20px;
+  display: inline-table;
+  padding: 0px 0px 0px 20px;
+  font-size: 15px;
+  width: 200px;
+   font-family: ARIAL;
+   font-size: 13px;
+ }
+
+.imagen1{
+   position: relative;
+ top: -12px;
+ }
+ .texto3{
+   color: white;
+  position: relative;
+  top: -30px;
+  display: inline-table;
+  padding: 0px 0px 0px 20px;
+  font-size: 15px;
+  width: 200px;
+   font-family: ARIAL;
+   font-size: 13px;
+ }
+ .imagen2{
+   position: relative;
+ top: -22px;
+ }
+ .texto4{
+   color: white;
+  position: relative;
+  top: -40px;
+  display: inline-table;
+  padding: 0px 0px 0px 20px;
+  font-size: 15px;
+  width: 200px;
+  font-family: ARIAL;
+   font-size: 13px;
+ }
+
+
+
+ .title{
+    color: white;
+ }
+ .parrafot {
+  display: inline-table;
+   font-family: ARIAL;
+   font-size: 16px;
+   color: white;
+ }
+ .parrafot2{
+ display: inline-table;
+   font-family: ARIAL;
+   font-size: 16px;
+     color: white;
+ }
+ .tex, .tex1{
+    font-size: 13px;
+     color: white;
+       font-family: ARIAL;
+       width: 260px;
+       margin: 0px 0px 0px 8px;
+ }
+ .enlace1, .enlace2{
+  color: #09ff32;
+ float: right;
+ text-decoration: none;
+ position: relative;
+ left: -22px;
+ }
+ .conteiner-footer{
+
+  
+  display: flex;
+  width: 100%;
+  max-width: 960px;
+  margin: auto;
+ }
+ .columna, .columna1, .columna2, .columna3{
+
+  width: 240px;
+
+ }
+.columna{
+  
+  padding: 0px 22px 0px 0px;
+}
+ .columna, h1{
+  font-size: 16px;
+  font-family: ARIAL;
+  color: white;
+  margin: 20px 0px 0px 0px;
+
+ }
+ .columna, p{
+  font-size: 13px;
+  font-family: ARIAL;
+  color: white;
+ }
+  .columna1, h1{
+  font-size: 16px;
+  font-family: ARIAL;
+  color: white;
+  margin: 20px 0px 0px 0px;
+
+
+ }
+ .row a{
+  color: #28ff15;
+  font-size: 12px;
+  font-family: ARIAL;
+  text-decoration: none;
+  
+ }
+  .social{
+  border-radius: 50%;
+  background-color: #186a91;
+  padding: 2px;
+ }
+  .row, label {
+    margin-left: 0px; 
+  }
+.columna1{
+    
+    padding: 0px 22px 0px 0px;
+}
+  .columna2, h1{
+  font-size: 16px;
+  font-family: ARIAL;
+  color: white;
+  margin: 20px 0px 0px 0px;
+
+
+ }
+.columna2{
+  width: 220px;
+    
+    margin-left: 10px;
+}
+.columna2, p{
+  font-size: 12px;
+  font-family: ARIAL;
+  color: white;
+ }
+  span{
+  font-size: 11px;
+  font-family: ARIAL;
+  color: white;
+
+ }
+ .mar{
+  margin: 0px 0px 5px 0px;
+ }
+  .columna2, p strong{
+  font-size: 13px;
+  font-family: ARIAL;
+  color: white;
+ }
+ .mar2{
+  margin: 0px 0px 5px 0px;
+ }
+ .mar3{
+  margin: 0px 0px 12px 0px;
+ }
+ .columna3{
+  width: 240px;
+  
+  
+  position: relative;
+  left: 10px;
+ }
+  .columna3, h1{
+  font-size: 16px;
+  font-family: ARIAL;
+  color: white;
+  margin: 18px 0px 0px 0px;
+
+ }
+ form input{
+  width: 240px;
+ line-height: 220%;
+ background-color: white;
+  border: 1px;
+  border-radius: 10px;
+  padding: 0px 0px 0px 10px;
+  font-size: 13px;
+  font-family: ARIAL;
+ }
+
+ .tarea{
+  background-color: white;
+  border: 1px;
+  height: 77px;
+  position: relative;
+  top: 22px;
+  border-radius: 10px;
+  padding: 5px 0px 50px 10px;
+  font-size: 13px;
+  font-family: ARIAL;
+
+ }
+ button{
+    cursor: pointer;
+    width: 80px;
+    border: 1px;
+    background-color: #a7c353;
+    font-weight: bold;
+    position: relative;
+    top: 30px;
+    border-radius: 10px;
+    color: #313131;
+ }
+ .fin{
+  display: flex;
+ }
+ .information{
+  position: relative;
+  left: 563px;
+  color: white;
+  font-size: 12px;
+  font-family: ARIAL;
+ }
+ .conteiner-enlace{
+  color: white;
+   font-size: 12px;
+  font-family: ARIAL;
+  margin-left: 20px;
+ }
+ .linfin{
+  max-width: 960px;
+ 
+ }
+ .correo{
+  text-decoration: none;
+  color: #a7c353;
+ }
+ .imp1{
+  position: relative;
+  top: 10px;
+ }

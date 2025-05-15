@@ -1,0 +1,16 @@
+body {
+    background-image: url(fdd.png);
+    background-size: cover;
+    background-attachment: fixed;
+    width: 100%;
+    height: 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+
+}
+
+.titulo {
+
+    font-size: 150px;
+    color: aliceblue;
+}
