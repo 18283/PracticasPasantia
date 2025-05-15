@@ -1,0 +1,15 @@
+{
+    "menuPasantia": {
+        "formulario de pasantes": "../VISTAS/mostrar.php",
+        "buscar pasante": "../VISTAS/usuarios.php",
+        "seleccionar por apellido": "../VISTAS/contacto.php"
+    },
+    "fondo": "#d1c4e9",
+    "altura": "100vh",
+    "ancho": "200px",
+    "tamanoLetra": "16px",
+    "tipoLetra": "Arial, sans-serif",
+    "colorLetra": "#a887e6",
+    "negrita": true,
+    "cursiva": false
+}

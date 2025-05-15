@@ -1,0 +1,15 @@
+{
+    "menuDepartamento": {
+        "Lista": "../VISTAS/mostrar.php",
+        "Crear": "../VISTAS/usuarios.php",
+        "Buscar": "../VISTAS/contacto.php"
+    },
+    "fondo": "#d1c4e9",
+    "altura": "100vh",
+    "ancho": "200px",
+    "tamanoLetra": "16px",
+    "tipoLetra": "Arial, sans-serif",
+    "colorLetra": "#a887e6",
+    "negrita": true,
+    "cursiva": false
+}

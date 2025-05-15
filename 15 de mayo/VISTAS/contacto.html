@@ -1,0 +1,211 @@
+
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE-edge">
+	<meta name="viewport" content="width=device-width, user-scalable=no,
+	initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0">
+
+	<title>CRUD PHP & SQL SERVER</title>
+	<link href="css/bootstrap.css" rel="stylesheet">
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+    
+
+</head>
+
+<body >
+	
+    <nav class="navbar navbar-expand-lg my-4 py-4 navbar-light shadow-sm" style="background-color:#130f12;">
+
+        <div class="container-fluid">
+          
+        <a class="navbar-left" href="#">
+          <img src="logo1.png" alt="logo" width="250px">
+        </a>
+         
+      
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a class="nav-link active text-white h1"  href="formulario.php" >INICIO  </a>
+              </li>
+      
+              <li class="nav-item">
+              <a class="nav-link active text-white h1" aria-current="page" href="contacto.html">CONTACTO</a>
+              </li>
+      
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle text-white h1" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  SERVICIOS
+                </a>
+                <ul class="dropdown-menu text-white" aria-labelledby="navbarDropdown">
+                  <li><a class="dropdown-item text-dark fs-4" href="editar.php">EDITAR</a></li>
+                  <li><a class="dropdown-item text-dark fs-4" href="#">BUSCAR</a></li>
+                  <li><hr class="dropdown-divider text-dark">ALGO</li>
+                  <li><a class="dropdown-item text-dark fs-4" href="#">INSERTAR</a></li>
+                </ul>
+              </li>
+      
+
+
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  Dropdown
+                </a>
+                <ul class="dropdown-menu text-white" aria-labelledby="navbarDropdown">
+                  <li><a class="dropdown-item" href="#">Action</a></li>
+                  <li><a class="dropdown-item" href="#">Another action</a></li>
+                  <li><hr class="dropdown-divider"></li>
+                  <li><a class="dropdown-item" href="#">Something else here</a></li>
+                </ul>
+              </li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+              <li class="nav-item text-white" >
+                <a class="nav-link text-white h1" href="index.html" tabindex="-1" aria-disabled="false">CERRAR</a>
+              </li>
+      
+      
+            </ul>
+            
+          </div>
+        </div>
+      </nav>
+
+    <footer width="100%" style="display: inline-block;">
+
+    <div class="col-md-5 " style=  " background-color: rgb(255, 254, 254);  display: inline-flex;  position: relative;left: 500px;" >
+
+
+         <div class="col-md-4" >
+
+          <h1>detalles de la Compañia</h1>
+          <hr color="#3a3a3a">
+             <p>
+              ALEXA.NET Cooperation<br>
+              Calle VALLEGRANDE 8671<br>
+              SUR AMERICA <br>
+              Código Postal: 0000<br>
+              <br>
+              Tel: 75692051<br>
+              Fax: 78945 3698521470<br>
+              Email:<a href="amedrano@udabol.edu.bo" class="correo">Alexa_cooperation@gmail.com</a><br>
+              <br>
+              <strong>Horarios de Atención</strong><br>
+              Lunes - Viernes:08:00 - 17:30<br>
+              Sábados: 08.00 - 13.00
+            </p>
+            </div>
+
+           <div class="col-md-4" >
+          <h1>Redes Sociales</h1>
+          <hr color="#3a3a3a">
+           <div class="row">
+             <img src="linke.png" style="width: 50px; background-color: #186a91;
+  padding: 2px;">>
+            <a href="#"> ALEXA Official</a> 
+             <hr color="#3a3a3a">
+           </div>
+
+              <div class="row">
+             <img src="twtter.png"  alt="logo" style=" width: 50px; background-color: #186a91;
+  padding: 2px;">>
+            <a href="">ALEXA_Official</a>
+             <hr color="#3a3a3a">
+           </div>
+              <div class="row"  >
+             <img src="pinteres.png" style="width: 50px; background-color: #186a91;
+  padding: 2px;">>
+             <a href="">Fotos de iNSTAGRAM</a> 
+             <hr color="#3a3a3a">
+           </div>
+              <div class="row">
+             <img src="feed.png " style="width: 50px; background-color: #186a91;
+  padding: 2px;">
+             <a href="">Ubicación</a>
+             <hr color="#3a3a3a">
+           </div>
+           
+
+            </div>
+
+
+
+              <div class="col-md-4" >
+
+          <h1>Nuestro Blog</h1>
+          <hr color="#3a3a3a">
+           <p class="mar"><strong>SOLUCIONES TEGNOLOGICAS</strong><br></p>
+
+            <p class="mar2"><span> por: Tecky y 7.416 personas más</span></p>
+            
+            <p class="mar3"  style="line-height: 150%">
+             Muy buena atencion y el trabajo que hacen lo hacen muy bien programado y con todas las medidas de seguridad y normas <br>
+              <a href="" class="enlace2">Leér completo »</a>
+            </p>
+            <p class="mar"><strong>Nuevas Ideas</strong><br></p>
+
+            <p class="mar2"><span>Por: Andrew y 4.988 personas más</span></p>
+            
+            <p class="mar3" style="line-height: 150%">
+             Cada día estamos trabajando para intentar mejorar y estar en la vanguardia de la seguridad de datos de las empresas de Nuestro clientes <br>
+              <a href="" class="enlace2">Leér completo »</a>
+            </p>
+
+            </div>
+
+              <div class="col-md-4" >
+
+          <h1>Contactanos</h1>
+          <hr color="#3a3a3a">
+              <form>
+
+              <input type="text " name=""   placeholder="Name" >  
+             
+               <input type="text" name="" placeholder="Email" class="imp1">
+
+               <input class="tarea" placeholder="Message" > 
+               <button style="line-height: 200%" >Envíar</button>
+               </form>
+
+            </div>
+        
+    </div>
+
+
+    </footer>
+
+
+    <br>
+    <div  class="col-md-4" style="background-color: rgb(58, 230, 86); position: relative;left: 550px;">
+          <div class="h1">
+       Copyright @ 2024 ALEXA . All Rights Reserved
+          </div>
+
+           <div class="fs-1">
+               ALEXA.NET Cooperation 
+          </div>
+
+
+    </div>
+
+
+  </div>
+  
+</body>
+</html>

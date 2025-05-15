@@ -1,0 +1,10 @@
+{
+    "menu": {
+        "INICIO": "..\/VISTAS\/view_inicio.php",
+        "USUARIOS": "..\/VISTAS\/usuarios.php",
+        "DEPARTAMENTOS": "..\/VISTAS\/FormPersonalDeDepartamento.php"
+    },
+    "fondo": "#cac591",
+    "altura": "40px",
+    "ancho": "100%"
+}

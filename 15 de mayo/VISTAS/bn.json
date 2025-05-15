@@ -1,0 +1,16 @@
+{
+    "bn": {
+        "Inicio": "../VISTAS/view_inicio.php",
+        "Usuarios": "../VISTAS/usuarios.php",
+        "Departamento": "../VISTAS/FormPersonalDeDepartamento.php",
+        "Reportes": "../VISTAS/RegistrosDePasantia.php"
+    },
+    "fondo": "#a887e6",
+    "altura": "50px",
+    "ancho": "100%",
+    "tamanoLetra": "22px",
+    "tipoLetra": "Arial, sans-serif",
+    "colorLetra": "#ffffff",
+    "negrita": true,
+    "cursiva": true
+}
