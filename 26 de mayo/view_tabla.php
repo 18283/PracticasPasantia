@@ -21,6 +21,9 @@ class view_tabla {
         }
     }
 
+    public function obtenerDatos() {
+        return $this->copia_stmt;
+    }
 
     public function establecerEstiloColorido() {
         $this->estiloTabla = "style='
@@ -54,9 +57,9 @@ class view_tabla {
         }
     }
 
-    public function mostrarTabla($stmt_variable) {
-        if (!$stmt_variable) {
-            echo "<p>No hay resultados que mostrar.</p>";
+    public function mostrarTabla($datos_array) {
+        if (!$datos_array || empty($datos_array)) {
+            echo "<p style='text-align: center;'>No se encontraron resultados.</p>";
             return;
         }
 
@@ -107,16 +110,8 @@ class view_tabla {
         echo "<div class='tabla-contenedor'>";
         echo "<table class='view-tabla' {$this->estiloTabla}>";
 
-        // Columnas
-        $columnas = [];
-        $metadata = sqlsrv_field_metadata($stmt_variable);
-        if ($metadata === false) {
-            echo "<p>Error al obtener la metadata de los campos.</p>";
-            return;
-        }
-        foreach ($metadata as $field) {
-            $columnas[] = $field['Name'];
-        }
+        // Obtener columnas desde la primera fila
+        $columnas = array_keys($datos_array[0]);
 
         // Encabezado
         echo "<thead><tr>";
@@ -127,13 +122,7 @@ class view_tabla {
 
         // Cuerpo
         echo "<tbody>";
-        $hayResultados = false;
-        while ($fila = sqlsrv_fetch_array($stmt_variable, SQLSRV_FETCH_ASSOC)) {
-            if ($fila === false) {
-                echo "<p>Error al obtener los datos.</p>";
-                return;
-            }
-            $hayResultados = true;
+        foreach ($datos_array as $fila) {
             echo "<tr>";
             foreach ($columnas as $col) {
                 echo "<td>" . htmlspecialchars($fila[$col]) . "</td>";
@@ -143,14 +132,9 @@ class view_tabla {
         echo "</tbody>";
         echo "</table>";
         echo "</div>";
-
-        if (!$hayResultados) {
-            echo "<p style='text-align: center;'>No se encontraron resultados.</p>";
-        }
     }
     
     public function buscador($campos) {
-        echo $campo;
         if (!is_array($campos) || empty($campos)) {
             echo "<p>Parámetros inválidos para el buscador.</p>";
             return;
@@ -176,24 +160,34 @@ class view_tabla {
         </form>";
 
         // Si se envió el formulario (se presionó "Buscar")
-        if (!empty($columnaSeleccionada) && !empty($palabra_a_filtrar)) {
+        //if (!empty($columnaSeleccionada) && !empty($palabra_a_filtrar)) {
                 
 
             // Llamar a la función externa que muestra la tabla filtrada
             $this->filtrar($palabra_a_filtrar, $columnaSeleccionada);
-        }
+        //}
     }
 
     //Funcion de filtrar para filtrar: que me filtre el stmt en la misma base de datos, actualizar stmt con la  copia
     public function filtrar($palabra, $columna){
-        $stmt=$copia_stmt;
-        //trabaja con la consulta de $copia_stmt y filtra toda las filas, de tal manera que la colunna que seleccione solo tenga filas que tengan la palabra o numero que envie como parametro
-        //no necesariamente mayuscula o minusculas si asi se escribió, que mantenga todas las filas con concidencias de esa palabra y las filas que no coinciden que no las tenga en cuenta, que todo esto
-        //se haga en la $copia_stmt, no con la base de datos, no con la vista que dibujo mostrarTabla($stmt_variable), con la variable $copia_stmt, para que asi dibuje esa copia con un mostrarTabla($stmt_variable) que reciba un parametro
-        //que en este caso seria $copia_stmt
-        //.....
+        if (($palabra==null || $palabra=="")||($columna==null || $columna=="")){
+            $this->mostrarTabla($this->copia_stmt);
+        } else {
+            $palabra = strtolower($palabra); // para comparación sin importar mayúsculas/minúsculas
 
-        $this->mostrarTabla($copia_stmt);
+            $filtrados = array_filter($this->copia_stmt, function($fila) use ($palabra, $columna) {
+                if (!isset($fila[$columna])) return false;
+
+                $valor = strtolower(strval($fila[$columna]));
+                return strpos($valor, $palabra) !== false;
+            });
+
+            // Reindexar el array por seguridad
+            $filtrados = array_values($filtrados);
+
+            $this->mostrarTabla($filtrados);
+        }
+        
     }
 
 }
