@@ -1,4 +1,14 @@
 <?php
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+session_start();
+if (!isset($_SESSION['usuario'])) {
+    header("Location: /SysCA5/VISTAS/view_login.php");
+    exit();
+}
+
+
 require_once '../../CONTROLADOR/DEPARTAMENTO/DepartamentoController.php';
 
 if (!isset($_POST['datosUsuario']) || !is_array($_POST['datosUsuario'])) {
@@ -10,7 +20,75 @@ $datosUsuario = $_POST['datosUsuario'];
 
 $controllerD = new DepartamentoController();
 $listaDepartamentos = $controllerD->obtenerListaDepartamentos();
+?>
 
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f7f9fc;
+        margin: 0;
+        padding: 0;
+    }
+
+    .form-container {
+        max-width: 600px;
+        margin: 40px auto;
+        padding: 30px;
+        background-color: #ffffff;
+        box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        border-radius: 12px;
+    }
+
+    .form-container h2 {
+        text-align: center;
+        margin-bottom: 25px;
+        color: #333;
+    }
+
+    .form-container label {
+        display: block;
+        margin-bottom: 5px;
+        font-weight: bold;
+        color: #444;
+    }
+
+    .form-container input,
+    .form-container select {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 15px;
+        border: 1px solid #ccc;
+        border-radius: 8px;
+        box-sizing: border-box;
+    }
+
+    .form-container button {
+        padding: 10px 20px;
+        margin-top: 10px;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        font-weight: bold;
+        font-size: 14px;
+    }
+
+    .form-container button[type="submit"] {
+        background-color: #28a745;
+        color: #fff;
+    }
+
+    .form-container button[type="button"] {
+        background-color: #dc3545;
+        color: #fff;
+        margin-left: 10px;
+    }
+
+    .form-container button:hover {
+        opacity: 0.9;
+    }
+</style>
+
+<?php
 class mostrarFormularioEdicion {
     private $datosUsuario;
     private $listaDepartamentos;
@@ -24,8 +102,9 @@ class mostrarFormularioEdicion {
         $datosUsuario = $this->datosUsuario;
         $listaDepartamentos = $this->listaDepartamentos;
         ?>
-        <h2 style="text-align:center;">Editar Usuario</h2>
-        <form method="POST" action="procesar_edicion.php">
+        <div class="form-container">
+            <h2>Editar Usuario</h2>
+            <form method="POST" action="procesar_edicion.php">
             <input type="hidden" name="USERID" value="<?= htmlspecialchars($datosUsuario['USERID']) ?>">
 
             <label for="BADGENUMBER">Carnet:</label>
@@ -88,6 +167,7 @@ class mostrarFormularioEdicion {
             <button type="submit">Actualizar Usuario</button>
             <button type="button" onclick="window.history.back();">Cancelar</button>
         </form>
+        </div>
         <?php
     }
 }
@@ -95,3 +175,4 @@ class mostrarFormularioEdicion {
 $formulario = new mostrarFormularioEdicion($datosUsuario, $listaDepartamentos);
 $formulario->mostrarFormularioEdicion();
 ?>
+
