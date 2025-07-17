@@ -1,5 +1,15 @@
 <?php
-require_once '../../CONTROLADOR/USUARIO/UsuariosController.php';
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+session_start();
+if (!isset($_SESSION['usuario'])) {
+    header("Location: /SysCA5/VISTAS/view_login.php");
+    exit();
+}
+
+
+require_once '../../CONTROLADOR/USUARIOS/UsuariosController.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $USERID = $_POST['USERID'] ?? null;
@@ -8,6 +18,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     if (!$USERID || !$BADGENUMBER || !$NAME) {
         die("❌ Faltan datos requeridos.");
+        // Temporal para depuración
+        echo "<pre>";
+        print_r($_POST);
+        echo "</pre>";
     }
 
     try {
@@ -21,7 +35,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             'EMail' => $_POST['EMail'] ?? null,
             'HIREDDAY' => $_POST['HIREDDAY'] ?? null,
             'BIRTHDAY' => $_POST['BIRTHDAY'] ?? null,
-            'DEFAULTDEPTID' => $_POST['DEFAULTDEPTID'] ?? null,
+            'DEPTID' => $_POST['DEFAULTDEPTID'] ?? null,
             'OPHONE' => $_POST['OPHONE'] ?? null,
             'FPHONE' => $_POST['FPHONE'] ?? null,
             'privilege' => $_POST['privilege'] ?? null,
