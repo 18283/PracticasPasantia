@@ -80,6 +80,8 @@ while ($fila = sqlsrv_fetch_array($stmt, SQLSRV_FETCH_ASSOC)) {
 		$tabla->establecerEstiloColorido();
         $tabla->RutasDeAcciones('editarformulario.php', 'view_crear.php', 'view_crear.php');
         $tabla->establecerCampoID('Carnet');
+        $pagina = isset($_GET['pagina']) ? (int)$_GET['pagina'] : 1;
+        $tabla->configurarPaginacion(10, $pagina);  // 10 filas por página
 		$tabla->buscador(['Carnet', 'Nombre', 'Privilegio', 'Genero', 'Correo', 'Ingreso','Nacimiento','Departamento','Telefono de oficina', 'Telefono personal']);
         
         // $tabla->mostrarTabla($datos);
