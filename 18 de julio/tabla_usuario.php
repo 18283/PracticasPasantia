@@ -253,8 +253,42 @@ class view_tabla {
         echo "</tbody>";
         echo "</table>";
         echo "</div>";
+
+        echo "<style>
+            .paginacion {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                gap: 5px;
+                margin-top: 15px;
+                font-family: 'Segoe UI', sans-serif;
+            }
+
+            .paginacion a {
+                padding: 6px 12px;
+                border-radius: 6px;
+                text-decoration: none;
+                color: #1976d2;
+                border: 1px solid #1976d2;
+                font-weight: 500;
+                transition: all 0.3s ease;
+            }
+
+            .paginacion a:hover {
+                background-color: #1976d2;
+                color: white;
+            }
+
+            .paginacion .actual {
+                background-color: #0d47a1;
+                color: white;
+                border: 1px solid #0d47a1;
+                font-weight: bold;
+            }
+        </style>";
+
         if ($totalPaginas > 1) {
-            echo "<div style='text-align:center; margin-top:10px;'>";
+            echo "<div class='paginacion'>";
 
             if ($totalPaginas > 1) {
                 echo "<div style='text-align:center; margin-top:10px;'>";
@@ -288,8 +322,8 @@ class view_tabla {
                 for ($i = $inicio; $i <= $fin; $i++) {
                     $params['pagina'] = $i;
                     $url = $baseUrl . '?' . http_build_query($params);
-                    $active = $i == $this->paginaActual ? "font-weight:bold; text-decoration:underline;" : "";
-                    echo "<a href='$url' style='margin: 0 3px; $active'>$i</a>";
+                    $activeClass = $i == $this->paginaActual ? "actual" : "";
+                    echo "<a class='$activeClass' href='$url'>$i</a>";
                 }
 
                 // Botón › página siguiente
