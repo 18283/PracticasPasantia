@@ -256,12 +256,59 @@ class view_tabla {
         if ($totalPaginas > 1) {
             echo "<div style='text-align:center; margin-top:10px;'>";
 
-            for ($i = 1; $i <= $totalPaginas; $i++) {
-                $active = $i == $this->paginaActual ? "font-weight:bold; text-decoration:underline;" : "";
-                $urlActual = $_SERVER['PHP_SELF'] . '?' . http_build_query(array_merge($_GET, ['pagina' => $i]));
+            if ($totalPaginas > 1) {
+                echo "<div style='text-align:center; margin-top:10px;'>";
 
-                echo "<a href='$urlActual' style='margin: 0 5px; $active'>$i</a>";
+                $rango = 5; // Número de páginas visibles a la vez
+                $inicio = max(1, $this->paginaActual - floor($rango / 2));
+                $fin = min($totalPaginas, $inicio + $rango - 1);
+
+                if ($fin - $inicio + 1 < $rango) {
+                    $inicio = max(1, $fin - $rango + 1);
+                }
+
+                $baseUrl = strtok($_SERVER["REQUEST_URI"], '?');
+                $params = $_GET;
+                
+                // Botón « ir a primera
+                if ($this->paginaActual > 1) {
+                    $params['pagina'] = 1;
+                    $url = $baseUrl . '?' . http_build_query($params);
+                    echo "<a href='$url' style='margin: 0 5px;'>&laquo;</a>";
+                }
+
+                // Botón ‹ página anterior
+                if ($this->paginaActual > 1) {
+                    $params['pagina'] = $this->paginaActual - 1;
+                    $url = $baseUrl . '?' . http_build_query($params);
+                    echo "<a href='$url' style='margin: 0 5px;'>&lsaquo;</a>";
+                }
+
+                // Números visibles
+                for ($i = $inicio; $i <= $fin; $i++) {
+                    $params['pagina'] = $i;
+                    $url = $baseUrl . '?' . http_build_query($params);
+                    $active = $i == $this->paginaActual ? "font-weight:bold; text-decoration:underline;" : "";
+                    echo "<a href='$url' style='margin: 0 3px; $active'>$i</a>";
+                }
+
+                // Botón › página siguiente
+                if ($this->paginaActual < $totalPaginas) {
+                    $params['pagina'] = $this->paginaActual + 1;
+                    $url = $baseUrl . '?' . http_build_query($params);
+                    echo "<a href='$url' style='margin: 0 5px;'>&rsaquo;</a>";
+                }
+
+                // Botón » última
+                if ($this->paginaActual < $totalPaginas) {
+                    $params['pagina'] = $totalPaginas;
+                    $url = $baseUrl . '?' . http_build_query($params);
+                    echo "<a href='$url' style='margin: 0 5px;'>&raquo;</a>";
+                }
+
+                echo "</div>";
             }
+
 
             echo "</div>";
         }
