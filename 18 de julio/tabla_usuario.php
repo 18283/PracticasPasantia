@@ -14,6 +14,9 @@ class view_tabla {
     private $rutaAnadir = null;
     private $rutaBorrar = null;
     private $nombreCampoID = 'Carnet';
+    private $filasPorPagina = 10;
+    private $paginaActual = 1;
+
 
     public function __construct($resultado) {
         $this->tabla = $resultado;
@@ -84,6 +87,13 @@ class view_tabla {
     public function mostrarTabla($datos_array = null) {
         $mostrarEdicion = $this->rutaEdicion && isset($datos_array[0]['USERID']);
         $datos_array = $datos_array ?? $this->tabla;
+        
+        $totalFilas = count($datos_array);
+        $totalPaginas = ceil($totalFilas / $this->filasPorPagina);
+        $this->paginaActual = min($this->paginaActual, $totalPaginas);
+        $inicio = ($this->paginaActual - 1) * $this->filasPorPagina;
+        $datos_array = array_slice($datos_array, $inicio, $this->filasPorPagina);
+
         if (!$datos_array || empty($datos_array)) {
             echo "<p style='text-align: center;'>No se encontraron resultados.</p>";
             return;
@@ -243,6 +253,19 @@ class view_tabla {
         echo "</tbody>";
         echo "</table>";
         echo "</div>";
+        if ($totalPaginas > 1) {
+            echo "<div style='text-align:center; margin-top:10px;'>";
+
+            for ($i = 1; $i <= $totalPaginas; $i++) {
+                $active = $i == $this->paginaActual ? "font-weight:bold; text-decoration:underline;" : "";
+                $urlActual = $_SERVER['PHP_SELF'] . '?' . http_build_query(array_merge($_GET, ['pagina' => $i]));
+
+                echo "<a href='$urlActual' style='margin: 0 5px; $active'>$i</a>";
+            }
+
+            echo "</div>";
+        }
+
     }
     
     public function buscador($campos) {
@@ -361,5 +384,10 @@ class view_tabla {
 
     public function establecerCampoID($campo) {
         $this->nombreCampoID = $campo;
+    }
+
+    public function configurarPaginacion($filasPorPagina = 10, $paginaActual = 1) {
+        $this->filasPorPagina = max(1, (int)$filasPorPagina);
+        $this->paginaActual = max(1, (int)$paginaActual);
     }
 }
