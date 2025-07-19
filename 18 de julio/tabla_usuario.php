@@ -4,6 +4,9 @@ require_once '../descargar_departamentos.php';
 require_once '../../CONTROLADOR/USUARIOS/UsuariosController.php';
 
 class view_tabla {
+
+/* Esta clase trata de todo lo relacionado con la tabla del Item de la Barra de navegación Usuario */
+
     private $tabla;
     private $estiloTabla;
     private $colorFondo;
@@ -17,7 +20,7 @@ class view_tabla {
     private $filasPorPagina = 10;
     private $paginaActual = 1;
 
-
+    /*Contructor de la clase*/
     public function __construct($resultado) {
         $this->tabla = $resultado;
         $this->estiloTabla = "";
@@ -33,6 +36,8 @@ class view_tabla {
     public function Devolver_filtrados() {
         return $this->filtrados;
     }
+
+    /*Se encarga de dibujar la tabla y la paginación de la misma*/
     public function mostrarBotonDescarga() {
         echo '<form method="post" style="text-align: center; margin-top: 20px;">';
         echo '<input type="submit" name="descargar" value="Descargar Tabla" style="padding: 10px 20px; background-color: #cb8db5; color: white; border: none; border-radius: 4px; cursor: pointer;">';
